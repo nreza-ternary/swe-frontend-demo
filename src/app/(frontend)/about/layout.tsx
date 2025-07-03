@@ -1,6 +1,5 @@
 import React from 'react'
-import './styles.css'
-import { Navbar } from '@/components/Navbar'
+import '../styles.css'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
@@ -13,7 +12,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        {/* <Navbar /> */}
         <main className="min-h-dvh">{children}</main>
       </body>
     </html>
