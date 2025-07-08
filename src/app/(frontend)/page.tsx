@@ -2,7 +2,30 @@ import { Capabilities } from '@/components/Capabilities'
 import Image from 'next/image'
 import React from 'react'
 
+// export const dynamic = 'force-dynamic'
+
+interface Dog {
+  message: string
+  status: string
+}
+
+async function fetchDog(): Promise<Dog | null> {
+  const dogRes = await fetch('https://dog.ceo/api/breeds/image/random', {
+    next: {
+      revalidate: 10,
+    },
+  })
+  if (dogRes.ok) {
+    return dogRes.json()
+  } else {
+    return null
+  }
+}
+
 export default async function HomePage() {
+  const dog = await fetchDog()
+
+  // console.log(dog)
   // const headers = await getHeaders()
   // const payloadConfig = await config
   // const payload = await getPayload({ config: payloadConfig })
@@ -47,7 +70,8 @@ export default async function HomePage() {
           <div className="-translate-x-[50%]">
             <Image
               className="w-[400px] h-[400px] object-cover relative z-20"
-              src={'/old-4508732_1280.jpg'}
+              // @ts-expect-error: dog is probably null
+              src={dog.message}
               width={500}
               height={500}
               alt="DP"
