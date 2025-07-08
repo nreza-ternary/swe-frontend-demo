@@ -4,10 +4,6 @@ import React, { useState, useEffect } from 'react'
 export const Navbar: React.FC = () => {
   const [isNavbarOpen, setNavbarOpen] = useState(false)
 
-  useEffect(() => {
-    alert('Hello World!')
-  }, [isNavbarOpen])
-
   return (
     <div className="absolute w-full h-36 px-14 flex flex-row justify-between items-center">
       <div>

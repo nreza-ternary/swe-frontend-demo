@@ -1,3 +1,4 @@
+import { Capabilities } from '@/components/Capabilities'
 import Image from 'next/image'
 import React from 'react'
 
@@ -5,6 +6,18 @@ export default async function HomePage() {
   // const headers = await getHeaders()
   // const payloadConfig = await config
   // const payload = await getPayload({ config: payloadConfig })
+  const cards = [
+    {
+      title: 'Design',
+      description:
+        "I'm probably not the typical designer positioned behind an Illustrator artboard adjusting pixels, but I design. Immersed in stylesheets tweaking font sizes and contemplating layouts is where you'll find me (~_^). I'm committed to creating fluent user experiences while staying fashionable.",
+    },
+    {
+      title: 'Engineering',
+      description:
+        "In building JavaScript applications, I'm equipped with just the right tools, and can absolutely function independently of them to deliver fast, resilient solutions optimized for scale — performance and scalabilty are priorities on my radar.",
+    },
+  ]
 
   return (
     <div className="h-screen">
@@ -43,6 +56,16 @@ export default async function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* Capabilities Section */}
+      <Capabilities>
+        {cards?.map((card, index) => (
+          <div key={index}>
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </div>
+        ))}
+      </Capabilities>
     </div>
   )
 }
